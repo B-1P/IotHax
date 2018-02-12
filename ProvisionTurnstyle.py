@@ -1,14 +1,14 @@
 import os
 import sys
-import iothub_service_client
-from iothub_service_client import IoTHubDeviceStatus, IoTHubError
+
+from iothub_service_client import IoTHubError
 from iothub_service_client import IoTHubRegistryManager, IoTHubRegistryManagerAuthMethod
 
 CONNECTION_STRING = os.environ.get('IOT_CONN_STRING')
 DEVICE_ID = sys.argv[1]
 
 
-def print_device_info(tit1e, iothub_device):
+def print_device_info(title, iothub_device):
     print(title + ":")
     print("iothubDevice.deviceId                    = {0}".format(iothub_device.deviceId))
     print("iothubDevice.primaryKey                  = {0}".format(iothub_device.primaryKey))
