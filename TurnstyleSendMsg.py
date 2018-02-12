@@ -1,6 +1,9 @@
 import random
 import time
 import sys
+import json
+import uuid
+from time import gmtime, strftime
 import iothub_client
 from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult
 from iothub_client import IoTHubMessage, IoTHubMessageDispositionResult, IoTHubError, DeviceMethodReturnValue
@@ -12,7 +15,6 @@ PROTOCOL = IoTHubTransportProvider.MQTT
 MESSAGE_TIMEOUT = 10000
 AVG_WIND_SPEED = 10.0
 SEND_CALLBACKS = 0
-MSG_TXT = "{\"deviceId\": \"MyFirstPythonDevice\",\"windSpeed\": %.2f}"
 
 
 def send_confirmation_callback(message, result, user_context):
@@ -44,7 +46,10 @@ def iothub_client_telemetry_sample_run():
         message_counter = 0
 
         while True:
-            msg_txt_formatted = MSG_TXT % (AVG_WIND_SPEED + (random.random() * 4 + 2))
+            msg_txt_formatted = json.dumps({
+    "ticketId": str(uuid.uuid4()),
+    "entryTime": strftime("%Y-%m-%d %H:%M:%S", gmtime())
+})
             # messages can be encoded as string or bytearray
             if (message_counter & 1) == 1:
                 message = IoTHubMessage(bytearray(msg_txt_formatted, 'utf8'))
