@@ -1,24 +1,25 @@
+import os
 import sys
 import iothub_service_client
-from iothub_service_client import IoTHubRegistryManager, IoTHubRegistryManagerAuthMethod
 from iothub_service_client import IoTHubDeviceStatus, IoTHubError
+from iothub_service_client import IoTHubRegistryManager, IoTHubRegistryManagerAuthMethod
 
 CONNECTION_STRING = os.environ.get('IOT_CONN_STRING')
 DEVICE_ID = sys.argv[1]
 
 
 def print_device_info(tit1e, iothub_device):
-    print ( title + ":" )
-    print ( "iothubDevice.deviceId                    = {0}".format(iothub_device.deviceId) )
-    print ( "iothubDevice.primaryKey                  = {0}".format(iothub_device.primaryKey) )
-    print ( "iothubDevice.secondaryKey                = {0}".format(iothub_device.secondaryKey) )
-    print ( "iothubDevice.connectionState             = {0}".format(iothub_device.connectionState) )
-    print ( "iothubDevice.status                      = {0}".format(iothub_device.status) )
-    print ( "iothubDevice.lastActivityTime            = {0}".format(iothub_device.lastActivityTime) )
-    print ( "iothubDevice.cloudToDeviceMessageCount   = {0}".format(iothub_device.cloudToDeviceMessageCount) )
-    print ( "iothubDevice.isManaged                   = {0}".format(iothub_device.isManaged) )
-    print ( "iothubDevice.authMethod                  = {0}".format(iothub_device.authMethod) )
-    print ( "" )
+    print(title + ":")
+    print("iothubDevice.deviceId                    = {0}".format(iothub_device.deviceId))
+    print("iothubDevice.primaryKey                  = {0}".format(iothub_device.primaryKey))
+    print("iothubDevice.secondaryKey                = {0}".format(iothub_device.secondaryKey))
+    print("iothubDevice.connectionState             = {0}".format(iothub_device.connectionState))
+    print("iothubDevice.status                      = {0}".format(iothub_device.status))
+    print("iothubDevice.lastActivityTime            = {0}".format(iothub_device.lastActivityTime))
+    print("iothubDevice.cloudToDeviceMessageCount   = {0}".format(iothub_device.cloudToDeviceMessageCount))
+    print("iothubDevice.isManaged                   = {0}".format(iothub_device.isManaged))
+    print("iothubDevice.authMethod                  = {0}".format(iothub_device.authMethod))
+    print("")
 
 
 def iothub_createdevice():
@@ -36,10 +37,10 @@ def iothub_createdevice():
 
 
 if __name__ == '__main__':
-    print( "" )
-    print( "Python {0}".format(sys.version) )
-    print( "Creating device using the Azure IoT Hub Service SDK for Python" )
-    print( "" )
-    print( "    Connection string = {0}".format(CONNECTION_STRING) )
-    print( "    Device ID         = {0}".format(DEVICE_ID) )
+    print("")
+    print("Python {0}".format(sys.version))
+    print("Creating device using the Azure IoT Hub Service SDK for Python")
+    print("")
+    print("    Connection string = {0}".format(CONNECTION_STRING))
+    print("    Device ID         = {0}".format(DEVICE_ID))
     iothub_createdevice()
